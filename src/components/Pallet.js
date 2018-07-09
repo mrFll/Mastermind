@@ -8,11 +8,11 @@ class Pallet extends Component{
     render(){
         return(
             <div>
-                <button id={"purple"}/>
-                <button id={"blue"}/>
-                <button id={"green"}/>
-                <button id={"yellow"}/>
-                <button id={"red"}/>
+                <button className={"circle_button"} id={"purple"}/>
+                <button className={"circle_button"} id={"blue"}/>
+                <button className={"circle_button"} id={"green"}/>
+                <button className={"circle_button"} id={"yellow"}/>
+                <button className={"circle_button"} id={"red"}/>
             </div>
         );
     }
