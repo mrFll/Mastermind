@@ -10,6 +10,15 @@
     margin-right: 2px;
 }
 
+.resultHolder{
+    display: inline-block;
+    border: solid 1px black;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
 #result_holder{
     width: 50px;
     height: 50px;

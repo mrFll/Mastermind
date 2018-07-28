@@ -2,27 +2,22 @@ import React,{Component} from 'react';
 import '../style/legislatorStyle.css';
 
 class Legislator extends Component{
-
-    constructor(props){
-        super(props);
-        this.state={
-            value: null,
-        };
-    }
-
     render(){
         return(
             <div id={"pieceBox"}>
 
-                <div className={"pieceHolder"} id={"first"}/>
-                <div className={"pieceHolder"} id={"second"}/>
-                <div className={"pieceHolder"} id={"third"}/>
-                <div className={"pieceHolder"} id={"fourth"}/>
+                <div className={"pieceHolder"} id={this.props.value+"0"}/>
+                <div className={"pieceHolder"} id={this.props.value+"1"}/>
+                <div className={"pieceHolder"} id={this.props.value+"2"}/>
+                <div className={"pieceHolder"} id={this.props.value+"3"}/>
 
                 <div id={"result_holder"}>
-
+                    <div className={"resultHolder"} id={this.props.value+"0R"}></div>
+                    <div className={"resultHolder"} id={this.props.value+"1R"}></div>
+                    <div className={"resultHolder"} id={this.props.value+"2R"}></div>
+                    <div className={"resultHolder"} id={this.props.value+"3R"}></div>
                 </div>
-                <button id={"check_btn"}>Check</button>
+
             </div>
         );
     }
