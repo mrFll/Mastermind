@@ -1,14 +1,48 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import compose from 'recompose/compose';
 import {setBoardPieceColor} from './../actions';
 import Button from '@material-ui/core/Button';
 import '../style/palletStyle.css'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+// colors
+import red from "@material-ui/core/colors/red";
+import blue from "@material-ui/core/colors/blue";
+import yellow from "@material-ui/core/colors/yellow";
+import green from "@material-ui/core/colors/green";
+import purple from "@material-ui/core/colors/purple";
 
 
-/**
- * this is pallet component that contain piece colors in it
- */
+const styles = {
+    purpleButton: {
+        margin: 2,
+        backgroundColor: purple[500],
+    },
+    blueButton: {
+        margin: 2,
+        backgroundColor: blue[500],
+    },
+    greenButton: {
+        margin: 2,
+        backgroundColor: green[500],
+    },
+    yellowButton: {
+        margin: 2,
+        backgroundColor: yellow[500],
+    },
+    redButton: {
+        margin: 2,
+        backgroundColor: red[500],
+    },
+    row: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+};
+
 class Pallet extends Component{
+
     checkButton(){
         const activeRow = this.props.activeRow;
         const board = this.props.crc;
@@ -31,18 +65,14 @@ class Pallet extends Component{
     }
 
     render(){
-        const {row, column} = this.props;
+        const {row, column, classes, setColor} = this.props;
         return(
-            <div>
-                <button onClick={()=>this.props.setColor(row,column,1)} className={"circle_button"} id={"purple"}/>
-
-                <button onClick={()=>this.props.setColor(row,column,2)} className={"circle_button"} id={"blue"}/>
-
-                <button onClick={()=>this.props.setColor(row,column,3)} className={"circle_button"} id={"green"}/>
-
-                <button onClick={()=>this.props.setColor(row,column,4)} className={"circle_button"} id={"yellow"}/>
-
-                <button onClick={()=>this.props.setColor(row,column,5)} className={"circle_button"} id={"red"}/>
+            <div className={classes.row}>
+                <Button variant="fab" className={classes.purpleButton} onClick={()=> setColor(row,column,1)}> </Button>
+                <Button variant="fab" className={classes.blueButton} onClick={()=> setColor(row,column,2)}> </Button>
+                <Button variant="fab" className={classes.greenButton} onClick={()=> setColor(row,column,3)}> </Button>
+                <Button variant="fab" className={classes.yellowButton} onClick={()=> setColor(row,column,4)}> </Button>
+                <Button variant="fab" className={classes.redButton} onClick={()=> setColor(row,column,5)}> </Button>
 
                 <Button variant="extendedFab" color="primary">
                     Check
@@ -51,6 +81,10 @@ class Pallet extends Component{
         );
     }
 }
+
+Pallet.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => ({
     column : state.column,
@@ -65,4 +99,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pallet);
+//export default connect(mapStateToProps, mapDispatchToProps)(Pallet);
+
+export default compose(
+    withStyles(styles, { name: 'Pallet' }),
+    connect(mapStateToProps, mapDispatchToProps)
+)(Pallet);

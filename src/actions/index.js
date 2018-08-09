@@ -39,7 +39,7 @@ export const setColumnID = (columnID) => ({
  * @param guideArray array[4] with 3 state index value (1,2,null)
  * @returns {{type: string, row: *, guideArray: *}}
  */
-export const setGuideId = (row, guideArray) => ({
+export const setGuide = (row, guideArray) => ({
     type: 'SET_GUIDE',
     row,
     guideArray

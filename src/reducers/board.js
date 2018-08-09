@@ -21,6 +21,7 @@ const board = (state = boardDefaultArray , action) => {
          */
         case 'SET_BOARD_PIECE':
             let newState = state;
+            console.log("board", state);
 
             if(action.row > 4 || action.row < 0){
                 // check row validation
@@ -40,6 +41,6 @@ const board = (state = boardDefaultArray , action) => {
         default:
             return state;
     }
-}
+};
 
 export default board;
