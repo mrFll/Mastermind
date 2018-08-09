@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
 import Pallet from '../components/Pallet';
 import Legislator from '../components/Legislator';
 
-import './style/App.css'
+import '../style/App.css'
 
 
 class GameBoard extends Component {
 
+    /*
     constructor(props){
         super(props);
         this.state = {
-            activeRow: 0,
+            activeRow: 0,  number of the row that user can change the piece color and state
             row: null,
             column: null,
-            crc: [[],[]],
-            r: [],
-            rs: [[null],[null]]
+            crc: [[],[]],  game board piece array
+            r: [], result of the game
+            rs: [[null],[null]] checksum
         };
 
     }
-
+    */
     // child use parent fields
     // https://ourcodeworld.com/articles/read/409/how-to-update-parent-state-from-child-component-in-react
 
@@ -29,16 +29,11 @@ class GameBoard extends Component {
         return <Legislator value={i}/>;
     }
 
-
-    incertActiveRow(){
-        this.setSetate({activeRow: this.state.activeRow+1});
-    }
-
     renderResult(){
         return this.props.results.map((result)=>{
             return(
-                <li key={result.title} >
-                    {result.title}
+                <li key={result.colorId} >
+                    {result.colorId}
                 </li>
             );
         });
@@ -62,19 +57,16 @@ class GameBoard extends Component {
                 {this.renderLeg(4)}
 
 
-                <Pallet activeRow={this.state.activeRow} crc={this.state.crc} r={this.state.r} rs={this.state.rs}/>
+                <Pallet />
+
+                {/*
                 <ul >
                     {this.renderResult()}
                 </ul>
+                */}
             </div>
         );
     }
 }
 
-function mapStateTOProps(state) {
-    return {
-        results: state.results
-    };
-}
-
-export default connect(mapStateTOProps)(GameBoard);
+export default GameBoard;
